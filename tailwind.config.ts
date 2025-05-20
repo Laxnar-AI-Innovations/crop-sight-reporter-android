@@ -1,4 +1,3 @@
-
 import type { Config } from "tailwindcss";
 
 export default {
@@ -78,7 +77,9 @@ export default {
 					light: '#a5d6a7',
 					DEFAULT: '#66bb6a',
 					dark: '#388e3c'
-				}
+				},
+				// Splash screen navy color (matches Laxnar logo)
+				navy: '#0d2d56'
 			},
 			borderRadius: {
 				lg: 'var(--radius)',
@@ -111,6 +112,10 @@ export default {
 				'accordion-down': 'accordion-down 0.2s ease-out',
 				'accordion-up': 'accordion-up 0.2s ease-out',
 				'pulse-subtle': 'pulse-subtle 2s ease-in-out infinite'
+			},
+			transitionDuration: {
+				'1500': '1500ms',
+				'2000': '2000ms',
 			}
 		}
 	},
