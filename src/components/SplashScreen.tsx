@@ -37,7 +37,7 @@ const SplashScreen = ({ onComplete }: { onComplete: () => void }) => {
         {/* Company Logo with white background */}
         <div 
           className={`transition-all duration-1000 ease-in-out bg-white p-6 rounded-xl shadow-lg ${
-            animationStage >= 2 ? 'opacity-0 scale-90' : 'opacity-100 scale-100'
+            animationStage >= 1 ? 'opacity-0 scale-90' : 'opacity-100 scale-100'
           }`}
         >
           <img 
