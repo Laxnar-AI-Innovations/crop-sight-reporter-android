@@ -13,6 +13,8 @@ export const analyzeCropImage = async (imageBlob: Blob): Promise<CropDetectionRe
     const response = await axios.post(`${API_URL}/predict`, formData, {
       headers: {
         'Content-Type': 'multipart/form-data',
+        'bypass-tunnel-reminder': 'true', // Add header to bypass tunnel reminder
+        'User-Agent': 'CropDoctor-App/1.0', // Add custom user agent
       },
       timeout: 30000, // Add a reasonable timeout
     });
@@ -33,6 +35,10 @@ export const analyzeCropImage = async (imageBlob: Blob): Promise<CropDetectionRe
     // Show more specific error message when possible
     if (axios.isAxiosError(error) && error.response?.status === 404) {
       throw new Error('API endpoint not found. Please check your connection or try again later.');
+    }
+
+    if (axios.isAxiosError(error) && error.response?.status === 401) {
+      throw new Error('Authentication failed with the API server. Bypass headers might not be working correctly.');
     }
     
     throw new Error('Failed to analyze image. Please try again later.');
