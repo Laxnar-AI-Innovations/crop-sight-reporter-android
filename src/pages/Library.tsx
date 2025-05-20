@@ -1,6 +1,6 @@
 
 import React, { useState } from 'react';
-import Header from '@/components/Header';
+import Layout from '@/components/Layout';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Input } from '@/components/ui/input';
 import { Collapsible, CollapsibleContent, CollapsibleTrigger } from '@/components/ui/collapsible';
@@ -69,79 +69,75 @@ const Library = () => {
   );
   
   return (
-    <div className="flex flex-col min-h-screen bg-gray-50 w-full">
-      <Header />
-      
-      <main className="flex-grow p-4 pb-20">
-        <div className="w-full">
-          <div className="text-center mb-6">
-            <h1 className="text-2xl font-bold mb-3">{t('libraryTitle')}</h1>
-            <p className="text-muted-foreground mb-4 text-sm">
-              Reference guide to common crop diseases, symptoms, and management practices.
-            </p>
-            
-            <div className="relative mx-auto">
-              <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 h-4 w-4 text-muted-foreground" />
-              <Input
-                type="text"
-                placeholder={t('searchDisease')}
-                className="pl-10"
-                value={searchTerm}
-                onChange={(e) => setSearchTerm(e.target.value)}
-              />
-            </div>
-          </div>
+    <Layout>
+      <div className="w-full">
+        <div className="text-center mb-6">
+          <h1 className="text-2xl font-bold mb-3">{t('libraryTitle')}</h1>
+          <p className="text-muted-foreground mb-4 text-sm">
+            Reference guide to common crop diseases, symptoms, and management practices.
+          </p>
           
-          <div className="space-y-3 mb-16">
-            {filteredDiseases.length > 0 ? (
-              filteredDiseases.map(disease => (
-                <Card key={disease.id} className="bg-white shadow-sm">
-                  <Collapsible
-                    open={openItems[disease.id]}
-                    onOpenChange={() => toggleItem(disease.id)}
-                  >
-                    <CollapsibleTrigger className="w-full text-left">
-                      <CardHeader className="p-3 cursor-pointer flex flex-row items-center justify-between">
-                        <div>
-                          <CardTitle className="text-base">{disease.crop} - {disease.disease}</CardTitle>
-                        </div>
-                        {openItems[disease.id] ? (
-                          <Minus className="h-4 w-4 text-muted-foreground" />
-                        ) : (
-                          <Plus className="h-4 w-4 text-muted-foreground" />
-                        )}
-                      </CardHeader>
-                    </CollapsibleTrigger>
-                    <CollapsibleContent>
-                      <CardContent className="p-3 pt-0 border-t">
-                        <div className="space-y-3 text-sm">
-                          <div>
-                            <h4 className="font-semibold text-xs uppercase text-muted-foreground mb-1">Symptoms</h4>
-                            <p>{disease.symptoms}</p>
-                          </div>
-                          <div>
-                            <h4 className="font-semibold text-xs uppercase text-muted-foreground mb-1">Cause</h4>
-                            <p>{disease.cause}</p>
-                          </div>
-                          <div>
-                            <h4 className="font-semibold text-xs uppercase text-muted-foreground mb-1">Management</h4>
-                            <p>{disease.management}</p>
-                          </div>
-                        </div>
-                      </CardContent>
-                    </CollapsibleContent>
-                  </Collapsible>
-                </Card>
-              ))
-            ) : (
-              <div className="text-center p-6 bg-white rounded-lg shadow-sm">
-                <p className="text-muted-foreground">No diseases found for your search term.</p>
-              </div>
-            )}
+          <div className="relative mx-auto">
+            <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 h-4 w-4 text-muted-foreground" />
+            <Input
+              type="text"
+              placeholder={t('searchDisease')}
+              className="pl-10"
+              value={searchTerm}
+              onChange={(e) => setSearchTerm(e.target.value)}
+            />
           </div>
         </div>
-      </main>
-    </div>
+        
+        <div className="space-y-3 mb-16">
+          {filteredDiseases.length > 0 ? (
+            filteredDiseases.map(disease => (
+              <Card key={disease.id} className="bg-white shadow-sm">
+                <Collapsible
+                  open={openItems[disease.id]}
+                  onOpenChange={() => toggleItem(disease.id)}
+                >
+                  <CollapsibleTrigger className="w-full text-left">
+                    <CardHeader className="p-3 cursor-pointer flex flex-row items-center justify-between">
+                      <div>
+                        <CardTitle className="text-base">{disease.crop} - {disease.disease}</CardTitle>
+                      </div>
+                      {openItems[disease.id] ? (
+                        <Minus className="h-4 w-4 text-muted-foreground" />
+                      ) : (
+                        <Plus className="h-4 w-4 text-muted-foreground" />
+                      )}
+                    </CardHeader>
+                  </CollapsibleTrigger>
+                  <CollapsibleContent>
+                    <CardContent className="p-3 pt-0 border-t">
+                      <div className="space-y-3 text-sm">
+                        <div>
+                          <h4 className="font-semibold text-xs uppercase text-muted-foreground mb-1">Symptoms</h4>
+                          <p>{disease.symptoms}</p>
+                        </div>
+                        <div>
+                          <h4 className="font-semibold text-xs uppercase text-muted-foreground mb-1">Cause</h4>
+                          <p>{disease.cause}</p>
+                        </div>
+                        <div>
+                          <h4 className="font-semibold text-xs uppercase text-muted-foreground mb-1">Management</h4>
+                          <p>{disease.management}</p>
+                        </div>
+                      </div>
+                    </CardContent>
+                  </CollapsibleContent>
+                </Collapsible>
+              </Card>
+            ))
+          ) : (
+            <div className="text-center p-6 bg-white rounded-lg shadow-sm">
+              <p className="text-muted-foreground">No diseases found for your search term.</p>
+            </div>
+          )}
+        </div>
+      </div>
+    </Layout>
   );
 };
 
