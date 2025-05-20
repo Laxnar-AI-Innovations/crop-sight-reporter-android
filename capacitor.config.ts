@@ -1,4 +1,3 @@
-
 import { CapacitorConfig } from '@capacitor/cli';
 
 const config: CapacitorConfig = {
@@ -7,27 +6,25 @@ const config: CapacitorConfig = {
   webDir: 'dist',
   bundledWebRuntime: false,
   server: {
-    url: 'https://58e57c59-ebc3-44c5-8db3-c91df5576d72.lovableproject.com?forceHideBadge=true',
+    url: 'https://cafricrop.loca.lt',        // Point to your Localtunnel URL :contentReference[oaicite:1]{index=1}
     cleartext: true
   },
   plugins: {
     Camera: {
       presentationStyle: 'fullscreen',
-      // Set permissions for Android
       permissions: ['android.permission.CAMERA']
     },
-    // Add network permissions to make external API calls
     CapacitorHttp: {
       enabled: true
     }
   },
   android: {
-    appendUserAgent: 'CropDoctor/1.0',
-    // Allow cleartext traffic to various domains
+    // Append a custom User-Agent so Localtunnel sees a non-browser client :contentReference[oaicite:2]{index=2}
+    appendUserAgent: 'CropDoctor-App/1.0',
     allowMixedContent: true,
     webContentsDebuggingEnabled: true,
-    // Explicitly allow connections to localhost and the API domains
-    allowNavigation: ['localhost', '127.0.0.1', '6d69-2409-40e3-3a-d305-8d73-955d-248f-d325.ngrok-free.app', 'par-firms-job-combines.trycloudflare.com', 'laxnarcropdoctor.loca.lt', '6ae2-2409-40e3-103b-10ab-cc05-cca5-9342-a404.ngrok-free.app', 'cafricrop.loca.lt', 'be18-2409-40e3-103b-10ab-cc05-cca5-9342-a404.ngrok-free.app']
+    // Whitelist your Localtunnel host for in-app navigation :contentReference[oaicite:3]{index=3}
+    allowNavigation: ['localhost', '127.0.0.1', 'cafricrop.loca.lt']
   }
 };
 
