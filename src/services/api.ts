@@ -20,17 +20,6 @@ export const analyzeCropImage = async (imageBlob: Blob): Promise<CropDetectionRe
     return response.data;
   } catch (error) {
     console.error('Error analyzing crop image:', error);
-    // Return mock data for testing/development if API fails
-    return {
-      count: 1,
-      detections: [
-        {
-          label: "Guava___Healthy",
-          confidence: 0.992,
-          bbox: [0.0, 0.0, 6000.0, 4000.0]
-        }
-      ],
-      inference_ms: 4683
-    };
+    throw error; // Re-throw the error to be handled by the caller
   }
 };
