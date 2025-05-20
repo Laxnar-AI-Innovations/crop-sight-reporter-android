@@ -11,7 +11,7 @@ const BottomNavigation: React.FC = () => {
   
   return (
     <div className="fixed bottom-0 left-0 right-0 bg-white shadow-lg z-20 mobile-safe-bottom">
-      <div className="flex justify-around items-center h-16">
+      <div className="flex justify-around items-center h-16 max-w-md mx-auto">
         <Link to="/" className="flex flex-col items-center justify-center w-1/4 py-1">
           <Home 
             className={`h-5 w-5 ${currentPath === '/' ? 'text-cropGreen' : 'text-gray-500'}`}

@@ -1,7 +1,5 @@
-
 import React, { useState } from 'react';
 import { toast } from 'sonner';
-import Header from '@/components/Header';
 import CameraButton from '@/components/CameraButton';
 import EmptyState from '@/components/EmptyState';
 import LoadingState from '@/components/LoadingState';
@@ -12,6 +10,7 @@ import { analyzeCropImage } from '@/services/api';
 import { Alert, AlertDescription } from '@/components/ui/alert';
 import { AlertTriangle } from 'lucide-react';
 import { useLanguage } from '@/contexts/LanguageContext';
+import Layout from '@/components/Layout';
 
 const Index = () => {
   const [isLoading, setIsLoading] = useState(false);
@@ -63,42 +62,38 @@ const Index = () => {
   };
 
   return (
-    <div className="flex flex-col min-h-screen bg-gray-50 w-full overflow-x-hidden">
-      <Header />
-      
-      <main className="flex-grow overflow-y-auto overflow-x-hidden w-full pb-28 px-4">
-        {isLoading ? (
-          <LoadingState />
-        ) : error && imagePreview ? (
-          <div className="w-full pt-4 pb-24">
-            <div className="mb-6">
-              <div className="aspect-square rounded-lg overflow-hidden">
-                <img 
-                  src={imagePreview} 
-                  alt="Captured crop" 
-                  className="w-full h-full object-contain"
-                />
-              </div>
+    <Layout>
+      {isLoading ? (
+        <LoadingState />
+      ) : error && imagePreview ? (
+        <div className="w-full pt-4 pb-24">
+          <div className="mb-6">
+            <div className="aspect-square rounded-lg overflow-hidden">
+              <img 
+                src={imagePreview} 
+                alt="Captured crop" 
+                className="w-full h-full object-contain"
+              />
             </div>
-            
-            <Alert variant="destructive" className="my-4">
-              <AlertTriangle className="h-4 w-4 mr-2" />
-              <AlertDescription>{error}</AlertDescription>
-            </Alert>
-            
-            <p className="text-center text-muted-foreground mt-2">
-              {t('tryAgain')}
-            </p>
           </div>
-        ) : analysisResult && imagePreview ? (
-          <AnalysisResults result={analysisResult} imagePreview={imagePreview} />
-        ) : (
-          <EmptyState />
-        )}
-      </main>
+          
+          <Alert variant="destructive" className="my-4">
+            <AlertTriangle className="h-4 w-4 mr-2" />
+            <AlertDescription>{error}</AlertDescription>
+          </Alert>
+          
+          <p className="text-center text-muted-foreground mt-2">
+            {t('tryAgain')}
+          </p>
+        </div>
+      ) : analysisResult && imagePreview ? (
+        <AnalysisResults result={analysisResult} imagePreview={imagePreview} />
+      ) : (
+        <EmptyState />
+      )}
       
       <CameraButton onCapture={handleCapture} isLoading={isLoading} />
-    </div>
+    </Layout>
   );
 };
 
