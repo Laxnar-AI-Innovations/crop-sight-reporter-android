@@ -25,7 +25,7 @@ const SplashScreen = ({ onComplete }: { onComplete: () => void }) => {
   }, [onComplete]);
   
   return (
-    <div className="flex flex-col min-h-screen max-w-md mx-auto">
+    <div className="flex flex-col min-h-screen max-w-md mx-auto bg-white">
       <div 
         className={`fixed inset-0 flex flex-col items-center justify-center z-50 transition-colors duration-1500 ease-in-out ${
           animationStage < 1 ? 'bg-navy' : 'bg-cropGreen'
@@ -33,7 +33,7 @@ const SplashScreen = ({ onComplete }: { onComplete: () => void }) => {
       >
         {/* Company Logo with white background */}
         <div 
-          className={`transition-all duration-1000 ease-in-out bg-white p-6 rounded-xl ${
+          className={`transition-all duration-1000 ease-in-out bg-white p-6 rounded-xl shadow-lg ${
             animationStage >= 2 ? 'opacity-0 scale-90' : 'opacity-100 scale-100'
           }`}
         >
