@@ -30,6 +30,11 @@ export const analyzeCropImage = async (imageBlob: Blob): Promise<CropDetectionRe
       throw new Error('Connection timed out. Please try again later.');
     }
     
+    // Show more specific error message when possible
+    if (axios.isAxiosError(error) && error.response?.status === 404) {
+      throw new Error('API endpoint not found. Please check your connection or try again later.');
+    }
+    
     throw new Error('Failed to analyze image. Please try again later.');
   }
 };
