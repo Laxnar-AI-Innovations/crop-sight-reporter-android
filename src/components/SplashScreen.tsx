@@ -8,15 +8,15 @@ const SplashScreen = ({ onComplete }: { onComplete: () => void }) => {
   useEffect(() => {
     // Stage 0: Show company logo
     // Stage 1: Transition background color
-    // Stage 2: Show app name with leaf (with 0.5s delay after logo fades)
+    // Stage 2: Show app name with leaf (with 2s delay after logo fades)
     // Stage 3: Fade out and call onComplete
     
     const timer1 = setTimeout(() => setAnimationStage(1), 1500);
     // Logo fadeout completes around 3000ms
-    // Add 500ms (0.5s) delay before starting Crop Doctor animation
-    const timer2 = setTimeout(() => setAnimationStage(2), 3500); 
-    const timer3 = setTimeout(() => setAnimationStage(3), 5000);
-    const timer4 = setTimeout(() => onComplete(), 6000);
+    // Add 2000ms (2s) delay before starting Crop Doctor animation
+    const timer2 = setTimeout(() => setAnimationStage(2), 5000); 
+    const timer3 = setTimeout(() => setAnimationStage(3), 6500);
+    const timer4 = setTimeout(() => onComplete(), 7500);
     
     return () => {
       clearTimeout(timer1);
