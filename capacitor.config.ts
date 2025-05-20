@@ -12,7 +12,9 @@ const config: CapacitorConfig = {
   },
   plugins: {
     Camera: {
-      presentationStyle: 'fullscreen'
+      presentationStyle: 'fullscreen',
+      // Set permissions for Android
+      permissions: ['android.permission.CAMERA']
     }
   }
 };

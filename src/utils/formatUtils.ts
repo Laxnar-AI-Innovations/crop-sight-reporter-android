@@ -1,38 +1,37 @@
 
+/**
+ * Extracts crop and condition information from a detection label.
+ * Labels are typically in format "CropName___Condition"
+ */
+export const extractConditionFromLabel = (label: string) => {
+  const parts = label.split('___');
+  return {
+    crop: parts[0] || 'Unknown',
+    condition: parts[1] || 'Unknown'
+  };
+};
+
+/**
+ * Formats confidence value (0-1) to percentage string with 1 decimal place
+ */
 export const formatConfidencePercentage = (confidence: number): string => {
   return `${(confidence * 100).toFixed(1)}%`;
 };
 
-export const formatTimestamp = (date: Date): string => {
-  return new Intl.DateTimeFormat('en-US', {
-    month: 'short',
-    day: 'numeric',
-    hour: '2-digit',
-    minute: '2-digit',
-  }).format(date);
-};
-
-export const extractConditionFromLabel = (label: string): { crop: string, condition: string } => {
-  const parts = label.split('___');
-  if (parts.length === 2) {
-    return { crop: parts[0], condition: parts[1].replace(/_/g, ' ') };
-  }
-  return { crop: label, condition: 'Unknown' };
-};
-
+/**
+ * Returns appropriate color classes based on condition
+ */
 export const getConditionColor = (condition: string): string => {
-  const lowerCondition = condition.toLowerCase();
-  
-  if (lowerCondition.includes('healthy')) {
+  if (condition.toLowerCase().includes('healthy')) {
     return 'bg-green-500';
-  } else if (lowerCondition.includes('blight') || 
-             lowerCondition.includes('rust') || 
-             lowerCondition.includes('spot')) {
+  } else if (condition.toLowerCase().includes('blight') || 
+             condition.toLowerCase().includes('rot') || 
+             condition.toLowerCase().includes('spot')) {
     return 'bg-red-500';
-  } else if (lowerCondition.includes('mild') || 
-             lowerCondition.includes('early')) {
+  } else if (condition.toLowerCase().includes('deficiency') || 
+             condition.toLowerCase().includes('mildew')) {
     return 'bg-yellow-500';
   } else {
-    return 'bg-gray-500';
+    return 'bg-blue-500';
   }
 };
