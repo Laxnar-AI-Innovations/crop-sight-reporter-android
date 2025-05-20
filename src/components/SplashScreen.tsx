@@ -29,7 +29,7 @@ const SplashScreen = ({ onComplete }: { onComplete: () => void }) => {
       <div 
         className="fixed inset-0 flex flex-col items-center justify-center z-50 transition-colors duration-1500 ease-in-out max-w-md mx-auto"
         style={{ 
-          backgroundColor: animationStage < 1 ? '#0d2d56' : '#4caf50'
+          backgroundColor: animationStage < 1 ? '#ffffff' : '#4caf50'
         }}
       >
         {/* Company Logo with white background */}
