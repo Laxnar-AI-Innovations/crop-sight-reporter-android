@@ -25,42 +25,44 @@ const SplashScreen = ({ onComplete }: { onComplete: () => void }) => {
   }, [onComplete]);
   
   return (
-    <div 
-      className={`fixed inset-0 flex flex-col items-center justify-center z-50 transition-colors duration-1500 ease-in-out ${
-        animationStage < 1 ? 'bg-navy' : 'bg-cropGreen'
-      }`}
-    >
-      {/* Company Logo */}
+    <div className="flex flex-col min-h-screen max-w-md mx-auto">
       <div 
-        className={`transition-all duration-1000 ease-in-out ${
-          animationStage >= 2 ? 'opacity-0 scale-90' : 'opacity-100 scale-100'
+        className={`fixed inset-0 flex flex-col items-center justify-center z-50 transition-colors duration-1500 ease-in-out ${
+          animationStage < 1 ? 'bg-navy' : 'bg-cropGreen'
         }`}
       >
-        <img 
-          src="/lovable-uploads/9c97ef2b-dcb7-4b29-92ed-e29581d617d0.png" 
-          alt="Laxnar AI Innovations" 
-          className="w-64 h-auto mb-8" 
+        {/* Company Logo with white background */}
+        <div 
+          className={`transition-all duration-1000 ease-in-out bg-white p-6 rounded-xl ${
+            animationStage >= 2 ? 'opacity-0 scale-90' : 'opacity-100 scale-100'
+          }`}
+        >
+          <img 
+            src="/lovable-uploads/9c97ef2b-dcb7-4b29-92ed-e29581d617d0.png" 
+            alt="Laxnar AI Innovations" 
+            className="w-64 h-auto" 
+          />
+        </div>
+        
+        {/* App Name with Leaf Icon */}
+        <div 
+          className={`flex flex-col items-center transition-all duration-1000 ease-in-out ${
+            animationStage < 2 ? 'opacity-0 translate-y-10' : 
+            animationStage === 2 ? 'opacity-100 translate-y-0' : 
+            'opacity-0 translate-y-0'
+          }`}
+        >
+          <Leaf className="h-12 w-12 text-white mb-4" />
+          <h1 className="text-3xl font-bold text-white">Crop Doctor</h1>
+        </div>
+        
+        {/* Final fade out overlay */}
+        <div 
+          className={`absolute inset-0 bg-white transition-opacity duration-1000 ${
+            animationStage === 3 ? 'opacity-100' : 'opacity-0 pointer-events-none'
+          }`} 
         />
       </div>
-      
-      {/* App Name with Leaf Icon */}
-      <div 
-        className={`flex flex-col items-center transition-all duration-1000 ease-in-out ${
-          animationStage < 2 ? 'opacity-0 translate-y-10' : 
-          animationStage === 2 ? 'opacity-100 translate-y-0' : 
-          'opacity-0 translate-y-0'
-        }`}
-      >
-        <Leaf className="h-12 w-12 text-white mb-4" />
-        <h1 className="text-3xl font-bold text-white">Crop Doctor</h1>
-      </div>
-      
-      {/* Final fade out overlay */}
-      <div 
-        className={`absolute inset-0 bg-white transition-opacity duration-1000 ${
-          animationStage === 3 ? 'opacity-100' : 'opacity-0 pointer-events-none'
-        }`} 
-      />
     </div>
   );
 };
