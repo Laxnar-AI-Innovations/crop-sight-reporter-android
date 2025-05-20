@@ -7,10 +7,10 @@ const API_URL = 'https://6d69-2409-40e3-3a-d305-8d73-955d-248f-d325.ngrok-free.a
 export const analyzeCropImage = async (imageBlob: Blob): Promise<CropDetectionResult> => {
   try {
     const formData = new FormData();
-    formData.append('image', imageBlob, 'crop_image.jpg');
+    formData.append('img', imageBlob, 'crop_image.jpg');
 
     console.log('Sending image to API:', API_URL);
-    const response = await axios.post(`${API_URL}/analyze`, formData, {
+    const response = await axios.post(`${API_URL}/predict`, formData, {
       headers: {
         'Content-Type': 'multipart/form-data',
       },
