@@ -23,11 +23,11 @@ const config: CapacitorConfig = {
   },
   android: {
     appendUserAgent: 'CropDoctor/1.0',
-    // Allow cleartext traffic to localhost and cropdoctor.loca.lt
+    // Allow cleartext traffic to various domains
     allowMixedContent: true,
     webContentsDebuggingEnabled: true,
-    // Explicitly allow connections to localhost
-    allowNavigation: ['localhost', '127.0.0.1']
+    // Explicitly allow connections to localhost and the ngrok domain
+    allowNavigation: ['localhost', '127.0.0.1', 'e357-2409-40e3-3a-d305-8d73-955d-248f-d325.ngrok-free.app']
   }
 };
 
