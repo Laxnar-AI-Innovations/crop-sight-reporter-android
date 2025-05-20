@@ -69,18 +69,18 @@ const Library = () => {
   );
   
   return (
-    <div className="flex flex-col min-h-screen bg-gray-50">
+    <div className="flex flex-col min-h-screen bg-gray-50 w-full">
       <Header />
       
-      <main className="flex-grow p-4 md:p-8">
-        <div className="container mx-auto max-w-4xl">
-          <div className="text-center mb-8">
-            <h1 className="text-3xl font-bold mb-4">{t('libraryTitle')}</h1>
-            <p className="text-muted-foreground mb-6">
+      <main className="flex-grow p-4 pb-20">
+        <div className="w-full">
+          <div className="text-center mb-6">
+            <h1 className="text-2xl font-bold mb-3">{t('libraryTitle')}</h1>
+            <p className="text-muted-foreground mb-4 text-sm">
               Reference guide to common crop diseases, symptoms, and management practices.
             </p>
             
-            <div className="relative max-w-md mx-auto">
+            <div className="relative mx-auto">
               <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 h-4 w-4 text-muted-foreground" />
               <Input
                 type="text"
@@ -92,7 +92,7 @@ const Library = () => {
             </div>
           </div>
           
-          <div className="space-y-4 mb-16">
+          <div className="space-y-3 mb-16">
             {filteredDiseases.length > 0 ? (
               filteredDiseases.map(disease => (
                 <Card key={disease.id} className="bg-white shadow-sm">
@@ -101,9 +101,9 @@ const Library = () => {
                     onOpenChange={() => toggleItem(disease.id)}
                   >
                     <CollapsibleTrigger className="w-full text-left">
-                      <CardHeader className="p-4 cursor-pointer flex flex-row items-center justify-between">
+                      <CardHeader className="p-3 cursor-pointer flex flex-row items-center justify-between">
                         <div>
-                          <CardTitle className="text-lg">{disease.crop} - {disease.disease}</CardTitle>
+                          <CardTitle className="text-base">{disease.crop} - {disease.disease}</CardTitle>
                         </div>
                         {openItems[disease.id] ? (
                           <Minus className="h-4 w-4 text-muted-foreground" />
@@ -113,18 +113,18 @@ const Library = () => {
                       </CardHeader>
                     </CollapsibleTrigger>
                     <CollapsibleContent>
-                      <CardContent className="p-4 pt-0 border-t">
-                        <div className="space-y-3">
+                      <CardContent className="p-3 pt-0 border-t">
+                        <div className="space-y-3 text-sm">
                           <div>
-                            <h4 className="font-semibold text-sm uppercase text-muted-foreground mb-1">Symptoms</h4>
+                            <h4 className="font-semibold text-xs uppercase text-muted-foreground mb-1">Symptoms</h4>
                             <p>{disease.symptoms}</p>
                           </div>
                           <div>
-                            <h4 className="font-semibold text-sm uppercase text-muted-foreground mb-1">Cause</h4>
+                            <h4 className="font-semibold text-xs uppercase text-muted-foreground mb-1">Cause</h4>
                             <p>{disease.cause}</p>
                           </div>
                           <div>
-                            <h4 className="font-semibold text-sm uppercase text-muted-foreground mb-1">Management</h4>
+                            <h4 className="font-semibold text-xs uppercase text-muted-foreground mb-1">Management</h4>
                             <p>{disease.management}</p>
                           </div>
                         </div>
@@ -134,7 +134,7 @@ const Library = () => {
                 </Card>
               ))
             ) : (
-              <div className="text-center p-8 bg-white rounded-lg shadow-sm">
+              <div className="text-center p-6 bg-white rounded-lg shadow-sm">
                 <p className="text-muted-foreground">No diseases found for your search term.</p>
               </div>
             )}
