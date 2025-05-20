@@ -12,10 +12,10 @@ const EmptyState: React.FC = () => {
         <Leaf className="h-8 w-8 text-cropGreen" />
       </div>
       <h2 className="text-xl font-bold mb-2">{t('analyzeCrops')}</h2>
-      <p className="text-muted-foreground text-sm max-w-[280px] mb-6">
+      <p className="text-muted-foreground text-sm mb-6 max-w-[90%] mx-auto">
         {t('takePhoto')}
       </p>
-      <div className="flex items-center justify-center bg-gray-100 rounded-lg p-3 max-w-[220px]">
+      <div className="flex items-center justify-center bg-gray-100 rounded-lg p-3 w-[90%] max-w-[220px]">
         <Camera className="h-5 w-5 mr-2 text-gray-500" />
         <p className="text-gray-500 text-xs">{t('tapCamera')}</p>
       </div>

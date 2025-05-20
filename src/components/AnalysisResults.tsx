@@ -18,7 +18,7 @@ const AnalysisResults: React.FC<AnalysisResultsProps> = ({ result, imagePreview 
   }
 
   return (
-    <div className="container mx-auto px-4 pt-4 pb-24">
+    <div className="w-full px-4 pt-4 pb-24">
       <div className="mb-6">
         <h2 className="text-2xl font-bold mb-2">{t('analysisResults')}</h2>
         <p className="text-muted-foreground text-sm flex items-center">

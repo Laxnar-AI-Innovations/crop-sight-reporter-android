@@ -63,14 +63,14 @@ const Index = () => {
   };
 
   return (
-    <div className="flex flex-col min-h-screen bg-gray-50">
+    <div className="flex flex-col min-h-screen bg-gray-50 w-full overflow-x-hidden">
       <Header />
       
-      <main className="flex-grow overflow-auto">
+      <main className="flex-grow overflow-y-auto overflow-x-hidden w-full">
         {isLoading ? (
           <LoadingState />
         ) : error && imagePreview ? (
-          <div className="container mx-auto px-4 pt-4 pb-24">
+          <div className="w-full px-4 pt-4 pb-24">
             <div className="mb-6">
               <div className="aspect-w-3 aspect-h-2 rounded-lg overflow-hidden">
                 <img 

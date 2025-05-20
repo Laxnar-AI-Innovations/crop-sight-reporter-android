@@ -17,7 +17,7 @@ const App = () => (
   <QueryClientProvider client={queryClient}>
     <LanguageProvider>
       <TooltipProvider>
-        <div className="max-w-md mx-auto min-h-screen overflow-hidden">
+        <div className="w-full mx-auto min-h-screen overflow-x-hidden">
           <Toaster />
           <Sonner position="top-center" closeButton toastOptions={{ duration: 3000 }} />
           <BrowserRouter>
