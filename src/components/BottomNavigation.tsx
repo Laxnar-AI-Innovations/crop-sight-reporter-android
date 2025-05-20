@@ -2,7 +2,7 @@
 import React from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { useLanguage } from '@/contexts/LanguageContext';
-import { Home, Info, BookMedical, Library } from 'lucide-react';
+import { Home, Info, BookOpen, Library } from 'lucide-react';
 
 const BottomNavigation: React.FC = () => {
   const { t } = useLanguage();
@@ -31,7 +31,7 @@ const BottomNavigation: React.FC = () => {
         </Link>
         
         <Link to="/treatments" className="flex flex-col items-center justify-center w-1/4 py-1">
-          <BookMedical 
+          <BookOpen 
             className={`h-6 w-6 ${currentPath === '/treatments' ? 'text-cropGreen' : 'text-gray-500'}`}
           />
           <span className={`text-xs mt-1 ${currentPath === '/treatments' ? 'text-cropGreen font-medium' : 'text-gray-500'}`}>
