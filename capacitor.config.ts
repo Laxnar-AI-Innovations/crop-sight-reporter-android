@@ -15,7 +15,17 @@ const config: CapacitorConfig = {
       presentationStyle: 'fullscreen',
       // Set permissions for Android
       permissions: ['android.permission.CAMERA']
+    },
+    // Add network permissions to make external API calls
+    CapacitorHttp: {
+      enabled: true
     }
+  },
+  android: {
+    appendUserAgent: 'CropDoctor/1.0',
+    // Allow cleartext traffic to cropdoctor.loca.lt
+    allowMixedContent: true,
+    webContentsDebuggingEnabled: true
   }
 };
 
