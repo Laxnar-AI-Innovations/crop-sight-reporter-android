@@ -2,7 +2,7 @@
 import { CapacitorConfig } from '@capacitor/cli';
 
 const config: CapacitorConfig = {
-  appId: 'app.lovable.58e57c59ebc344c58db3c91df5576d72',
+  appId: 'com.cropdoctor.app',
   appName: 'Crop Doctor',
   webDir: 'dist',
   bundledWebRuntime: false,
