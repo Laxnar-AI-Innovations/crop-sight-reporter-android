@@ -1,3 +1,4 @@
+
 import React, { useState } from 'react';
 import { toast } from 'sonner';
 import Header from '@/components/Header';
@@ -10,12 +11,14 @@ import { takePicture, base64toBlob } from '@/services/cameraService';
 import { analyzeCropImage } from '@/services/api';
 import { Alert, AlertDescription } from '@/components/ui/alert';
 import { AlertTriangle } from 'lucide-react';
+import { useLanguage } from '@/contexts/LanguageContext';
 
 const Index = () => {
   const [isLoading, setIsLoading] = useState(false);
   const [imagePreview, setImagePreview] = useState<string | null>(null);
   const [analysisResult, setAnalysisResult] = useState<CropDetectionResult | null>(null);
   const [error, setError] = useState<string | null>(null);
+  const { t } = useLanguage();
 
   const handleCapture = async () => {
     try {
@@ -44,7 +47,7 @@ const Index = () => {
       
       // Show appropriate toast based on result
       if (result.detections.length === 0) {
-        toast.info('No crop conditions detected.');
+        toast.info(t('noConditions'));
       } else {
         toast.success('Analysis complete!');
       }
@@ -84,7 +87,7 @@ const Index = () => {
             </Alert>
             
             <p className="text-center text-muted-foreground mt-2">
-              Try taking another photo or check your network connection.
+              {t('tryAgain')}
             </p>
           </div>
         ) : analysisResult && imagePreview ? (
