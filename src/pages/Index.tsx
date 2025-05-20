@@ -66,17 +66,17 @@ const Index = () => {
     <div className="flex flex-col min-h-screen bg-gray-50 w-full overflow-x-hidden">
       <Header />
       
-      <main className="flex-grow overflow-y-auto overflow-x-hidden w-full pb-28">
+      <main className="flex-grow overflow-y-auto overflow-x-hidden w-full pb-28 px-4">
         {isLoading ? (
           <LoadingState />
         ) : error && imagePreview ? (
-          <div className="w-full px-4 pt-4 pb-24">
+          <div className="w-full pt-4 pb-24">
             <div className="mb-6">
-              <div className="aspect-w-3 aspect-h-2 rounded-lg overflow-hidden">
+              <div className="aspect-square rounded-lg overflow-hidden">
                 <img 
                   src={imagePreview} 
                   alt="Captured crop" 
-                  className="w-full h-full object-cover"
+                  className="w-full h-full object-contain"
                 />
               </div>
             </div>

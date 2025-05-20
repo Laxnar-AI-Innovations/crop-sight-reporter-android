@@ -18,7 +18,7 @@ const AnalysisResults: React.FC<AnalysisResultsProps> = ({ result, imagePreview 
   }
 
   return (
-    <div className="w-full px-4 pt-4 pb-24">
+    <div className="w-full pt-4 pb-24">
       <div className="mb-6">
         <h2 className="text-2xl font-bold mb-2">{t('analysisResults')}</h2>
         <p className="text-muted-foreground text-sm flex items-center">
@@ -28,11 +28,11 @@ const AnalysisResults: React.FC<AnalysisResultsProps> = ({ result, imagePreview 
       </div>
       
       <div className="mb-6">
-        <div className="aspect-w-3 aspect-h-2 rounded-lg overflow-hidden">
+        <div className="aspect-square rounded-lg overflow-hidden">
           <img 
             src={imagePreview} 
             alt="Analyzed crop" 
-            className="w-full h-full object-cover"
+            className="w-full h-full object-contain bg-gray-100"
           />
         </div>
       </div>

@@ -14,7 +14,7 @@ const BottomNavigation: React.FC = () => {
       <div className="flex justify-around items-center h-16">
         <Link to="/" className="flex flex-col items-center justify-center w-1/4 py-1">
           <Home 
-            className={`h-6 w-6 ${currentPath === '/' ? 'text-cropGreen' : 'text-gray-500'}`}
+            className={`h-5 w-5 ${currentPath === '/' ? 'text-cropGreen' : 'text-gray-500'}`}
           />
           <span className={`text-xs mt-1 ${currentPath === '/' ? 'text-cropGreen font-medium' : 'text-gray-500'}`}>
             {t('home')}
@@ -23,7 +23,7 @@ const BottomNavigation: React.FC = () => {
         
         <Link to="/about" className="flex flex-col items-center justify-center w-1/4 py-1">
           <Info 
-            className={`h-6 w-6 ${currentPath === '/about' ? 'text-cropGreen' : 'text-gray-500'}`}
+            className={`h-5 w-5 ${currentPath === '/about' ? 'text-cropGreen' : 'text-gray-500'}`}
           />
           <span className={`text-xs mt-1 ${currentPath === '/about' ? 'text-cropGreen font-medium' : 'text-gray-500'}`}>
             {t('about')}
@@ -32,7 +32,7 @@ const BottomNavigation: React.FC = () => {
         
         <Link to="/treatments" className="flex flex-col items-center justify-center w-1/4 py-1">
           <BookOpen 
-            className={`h-6 w-6 ${currentPath === '/treatments' ? 'text-cropGreen' : 'text-gray-500'}`}
+            className={`h-5 w-5 ${currentPath === '/treatments' ? 'text-cropGreen' : 'text-gray-500'}`}
           />
           <span className={`text-xs mt-1 ${currentPath === '/treatments' ? 'text-cropGreen font-medium' : 'text-gray-500'}`}>
             {t('treatments')}
@@ -41,7 +41,7 @@ const BottomNavigation: React.FC = () => {
         
         <Link to="/library" className="flex flex-col items-center justify-center w-1/4 py-1">
           <Library 
-            className={`h-6 w-6 ${currentPath === '/library' ? 'text-cropGreen' : 'text-gray-500'}`}
+            className={`h-5 w-5 ${currentPath === '/library' ? 'text-cropGreen' : 'text-gray-500'}`}
           />
           <span className={`text-xs mt-1 ${currentPath === '/library' ? 'text-cropGreen font-medium' : 'text-gray-500'}`}>
             {t('library')}
