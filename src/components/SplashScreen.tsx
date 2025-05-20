@@ -27,9 +27,10 @@ const SplashScreen = ({ onComplete }: { onComplete: () => void }) => {
   return (
     <div className="flex flex-col min-h-screen max-w-md mx-auto bg-white">
       <div 
-        className={`fixed inset-0 flex flex-col items-center justify-center z-50 transition-colors duration-1500 ease-in-out ${
-          animationStage < 1 ? 'bg-navy' : 'bg-cropGreen'
-        }`}
+        className="fixed inset-0 flex flex-col items-center justify-center z-50 transition-colors duration-1500 ease-in-out max-w-md mx-auto"
+        style={{ 
+          backgroundColor: animationStage < 1 ? '#0d2d56' : '#4caf50'
+        }}
       >
         {/* Company Logo with white background */}
         <div 
@@ -58,7 +59,7 @@ const SplashScreen = ({ onComplete }: { onComplete: () => void }) => {
         
         {/* Final fade out overlay */}
         <div 
-          className={`absolute inset-0 bg-white transition-opacity duration-1000 ${
+          className={`absolute inset-0 bg-white transition-opacity duration-1000 max-w-md mx-auto ${
             animationStage === 3 ? 'opacity-100' : 'opacity-0 pointer-events-none'
           }`} 
         />
