@@ -1,7 +1,7 @@
 
 import React from 'react';
 import { Button } from "@/components/ui/button";
-import { Camera } from 'lucide-react';
+import { Images } from 'lucide-react';
 
 interface CameraButtonProps {
   onCapture: () => void;
@@ -20,7 +20,7 @@ const CameraButton: React.FC<CameraButtonProps> = ({ onCapture, isLoading }) => 
         {isLoading ? (
           <div className="h-8 w-8 rounded-full border-4 border-white border-t-transparent animate-spin" />
         ) : (
-          <Camera className="h-8 w-8" />
+          <Images className="h-8 w-8" />
         )}
       </Button>
     </div>

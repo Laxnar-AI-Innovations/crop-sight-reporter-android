@@ -14,7 +14,11 @@ const config: CapacitorConfig = {
   plugins: {
     Camera: {
       presentationStyle: 'fullscreen',
-      permissions: ['android.permission.CAMERA']
+      permissions: [
+        'android.permission.CAMERA',
+        'android.permission.READ_EXTERNAL_STORAGE',
+        'android.permission.READ_MEDIA_IMAGES'
+      ]
     },
     // Enable the Capacitor HTTP plugin for external API calls
     CapacitorHttp: {

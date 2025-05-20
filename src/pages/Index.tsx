@@ -1,3 +1,4 @@
+
 import React, { useState } from 'react';
 import { toast } from 'sonner';
 import CameraButton from '@/components/CameraButton';
@@ -5,7 +6,7 @@ import EmptyState from '@/components/EmptyState';
 import LoadingState from '@/components/LoadingState';
 import AnalysisResults from '@/components/AnalysisResults';
 import { CropDetectionResult } from '@/types';
-import { takePicture, base64toBlob } from '@/services/cameraService';
+import { pickImage, base64toBlob } from '@/services/cameraService';
 import { analyzeCropImage } from '@/services/api';
 import { Alert, AlertDescription } from '@/components/ui/alert';
 import { AlertTriangle } from 'lucide-react';
@@ -24,11 +25,11 @@ const Index = () => {
       setIsLoading(true);
       setError(null);
       
-      // Capture photo using Capacitor Camera
-      const photo = await takePicture();
+      // Select photo from gallery using Capacitor Camera
+      const photo = await pickImage();
       
       if (!photo || !photo.base64String) {
-        toast.error('Failed to capture image.');
+        toast.error('Failed to select image.');
         setIsLoading(false);
         return;
       }
@@ -51,7 +52,7 @@ const Index = () => {
         toast.success('Analysis complete!');
       }
     } catch (error) {
-      console.error('Capture error:', error);
+      console.error('Image selection error:', error);
       const errorMessage = error instanceof Error ? error.message : 'An error occurred. Please try again.';
       setError(errorMessage);
       toast.error(errorMessage);

@@ -1,22 +1,22 @@
 
 import { Camera, CameraResultType, CameraSource, Photo } from '@capacitor/camera';
 
-export const takePicture = async (): Promise<Photo | null> => {
+export const pickImage = async (): Promise<Photo | null> => {
   try {
     const image = await Camera.getPhoto({
       quality: 90,
-      allowEditing: false,
+      allowEditing: true,
       resultType: CameraResultType.Base64,
-      source: CameraSource.Camera,
-      promptLabelHeader: 'Take a Crop Photo',
-      promptLabelPicture: 'Take Photo',
+      source: CameraSource.Photos,  // Changed from Camera to Photos
+      promptLabelHeader: 'Select a Crop Photo',
+      promptLabelPicture: 'Choose Photo',
       width: 1024,
       height: 1024,
     });
     
     return image;
   } catch (error) {
-    console.error('Camera error:', error);
+    console.error('Image picker error:', error);
     return null;
   }
 };
