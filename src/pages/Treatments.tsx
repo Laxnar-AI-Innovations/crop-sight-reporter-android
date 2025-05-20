@@ -42,10 +42,10 @@ const Treatments = () => {
         </div>
         
         <Tabs defaultValue="organic" className="mb-16">
-          <TabsList className="grid w-full grid-cols-3 mb-8">
-            <TabsTrigger value="organic">{t('organic')}</TabsTrigger>
-            <TabsTrigger value="chemical">{t('chemical')}</TabsTrigger>
-            <TabsTrigger value="preventive">{t('preventive')}</TabsTrigger>
+          <TabsList className="flex w-full flex-wrap mb-8">
+            <TabsTrigger value="organic" className="flex-grow text-xs sm:text-sm py-2">{t('organic')}</TabsTrigger>
+            <TabsTrigger value="chemical" className="flex-grow text-xs sm:text-sm py-2">{t('chemical')}</TabsTrigger>
+            <TabsTrigger value="preventive" className="flex-grow text-xs sm:text-sm py-2">{t('preventive')}</TabsTrigger>
           </TabsList>
           
           <TabsContent value="organic" className="space-y-4">
