@@ -66,7 +66,7 @@ const Index = () => {
     <div className="flex flex-col min-h-screen bg-gray-50 w-full overflow-x-hidden">
       <Header />
       
-      <main className="flex-grow overflow-y-auto overflow-x-hidden w-full">
+      <main className="flex-grow overflow-y-auto overflow-x-hidden w-full pb-28">
         {isLoading ? (
           <LoadingState />
         ) : error && imagePreview ? (

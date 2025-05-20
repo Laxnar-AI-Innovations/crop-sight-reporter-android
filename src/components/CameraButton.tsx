@@ -10,7 +10,7 @@ interface CameraButtonProps {
 
 const CameraButton: React.FC<CameraButtonProps> = ({ onCapture, isLoading }) => {
   return (
-    <div className="fixed bottom-6 left-0 right-0 flex justify-center">
+    <div className="fixed bottom-24 left-0 right-0 flex justify-center z-10">
       <Button 
         onClick={onCapture} 
         disabled={isLoading}
