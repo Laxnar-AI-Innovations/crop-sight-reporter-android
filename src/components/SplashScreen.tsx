@@ -45,13 +45,14 @@ const SplashScreen = ({ onComplete }: { onComplete: () => void }) => {
           />
         </div>
         
-        {/* App Name with Leaf Icon */}
+        {/* App Name with Leaf Icon - positioned higher on the screen */}
         <div 
-          className={`flex flex-col items-center transition-all duration-1000 ease-in-out ${
+          className={`flex flex-col items-center transition-all duration-1000 ease-in-out absolute ${
             animationStage < 2 ? 'opacity-0 translate-y-10' : 
             animationStage === 2 ? 'opacity-100 translate-y-0' : 
             'opacity-0 translate-y-0'
           }`}
+          style={{ top: '40%', transform: 'translateY(-50%)' }}
         >
           <Leaf className="h-12 w-12 text-white mb-4" />
           <h1 className="text-3xl font-bold text-white">Crop Doctor</h1>
