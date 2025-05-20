@@ -35,34 +35,14 @@ const Index = () => {
       // Convert base64 to blob for API submission
       const imageBlob = base64toBlob(photo.base64String);
       
-      // Mock API response for development/testing
-      // In production we'd use the real API endpoint
-      try {
-        // Call the API to analyze the crop image
-        const result = await analyzeCropImage(imageBlob);
-        setAnalysisResult(result);
-        
-        // If no detections, show a message
-        if (result.detections.length === 0) {
-          toast.info('No crop conditions detected.');
-        }
-      } catch (apiError) {
-        console.error('API error:', apiError);
-        
-        // For testing purposes, create mock data if API fails
-        const mockResult: CropDetectionResult = {
-          count: 1,
-          detections: [
-            {
-              label: "Guava___Healthy",
-              confidence: 0.992,
-              bbox: [0.0, 0.0, 6000.0, 4000.0]
-            }
-          ],
-          inference_ms: 4683
-        };
-        
-        setAnalysisResult(mockResult);
+      // Send the image to the API for analysis
+      const result = await analyzeCropImage(imageBlob);
+      setAnalysisResult(result);
+      
+      // Show appropriate toast based on result
+      if (result.detections.length === 0) {
+        toast.info('No crop conditions detected.');
+      } else {
         toast.success('Analysis complete!');
       }
     } catch (error) {
