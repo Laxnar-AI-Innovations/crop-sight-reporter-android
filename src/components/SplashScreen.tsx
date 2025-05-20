@@ -49,7 +49,7 @@ const SplashScreen = ({ onComplete }: { onComplete: () => void }) => {
         <div 
           className={`flex flex-col items-center transition-all duration-1000 ease-in-out absolute ${
             animationStage < 2 ? 'opacity-0 translate-y-10' : 
-            animationStage === 2 ? 'opacity-100 translate-y-0' : 
+            animationStage === 2 ? 'opacity-100 translate-y-0 animate-fade-in' : 
             'opacity-0 translate-y-0'
           }`}
           style={{ top: '40%', transform: 'translateY(-50%)' }}
