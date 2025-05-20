@@ -1,3 +1,4 @@
+
 import { CapacitorConfig } from '@capacitor/cli';
 
 const config: CapacitorConfig = {
@@ -6,8 +7,8 @@ const config: CapacitorConfig = {
   webDir: 'dist',
   bundledWebRuntime: false,
   server: {
-    // Load your app from the Localtunnel endpoint
-    url: 'https://cafricrop.loca.lt',
+    // Use the API URL for local development but will use bundled files on real devices
+    url: 'https://be18-2409-40e3-103b-10ab-cc05-cca5-9342-a404.ngrok-free.app',
     cleartext: true
   },
   plugins: {
@@ -21,12 +22,23 @@ const config: CapacitorConfig = {
     }
   },
   android: {
-    // Append a custom, non-browser User-Agent so Localtunnel skips its reminder page
+    // Append a custom, non-browser User-Agent for API calls
     appendUserAgent: 'CropDoctor-App/1.0',
     allowMixedContent: true,
     webContentsDebuggingEnabled: true,
-    // Whitelist the Localtunnel host for in-app navigation
-    allowNavigation: ['localhost', '127.0.0.1', 'cafricrop.loca.lt']
+    // Whitelist the API host for in-app navigation
+    allowNavigation: [
+      'localhost', 
+      '127.0.0.1', 
+      'cafricrop.loca.lt',
+      'be18-2409-40e3-103b-10ab-cc05-cca5-9342-a404.ngrok-free.app'
+    ],
+    // Add Android-specific permissions
+    permissions: [
+      "android.permission.INTERNET",
+      "android.permission.READ_EXTERNAL_STORAGE",
+      "android.permission.WRITE_EXTERNAL_STORAGE"
+    ]
   }
 };
 
