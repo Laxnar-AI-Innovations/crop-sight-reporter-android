@@ -7,10 +7,10 @@ const LoadingState: React.FC = () => {
   const { t } = useLanguage();
   
   return (
-    <div className="flex flex-col items-center justify-center h-full py-16 px-4">
-      <Loader2 className="h-12 w-12 text-cropGreen animate-spin mb-4" />
-      <h3 className="text-xl font-medium mb-2">{t('analyzing')}</h3>
-      <p className="text-muted-foreground text-center max-w-md">
+    <div className="flex flex-col items-center justify-center h-[70vh] py-8 px-4">
+      <Loader2 className="h-10 w-10 text-cropGreen animate-spin mb-4" />
+      <h3 className="text-lg font-medium mb-2">{t('analyzing')}</h3>
+      <p className="text-muted-foreground text-center text-sm max-w-[280px]">
         {t('aiExamining')}
       </p>
     </div>
