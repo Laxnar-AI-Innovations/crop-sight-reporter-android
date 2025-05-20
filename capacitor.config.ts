@@ -23,9 +23,11 @@ const config: CapacitorConfig = {
   },
   android: {
     appendUserAgent: 'CropDoctor/1.0',
-    // Allow cleartext traffic to cropdoctor.loca.lt
+    // Allow cleartext traffic to localhost and cropdoctor.loca.lt
     allowMixedContent: true,
-    webContentsDebuggingEnabled: true
+    webContentsDebuggingEnabled: true,
+    // Explicitly allow connections to localhost
+    allowNavigation: ['localhost', '127.0.0.1']
   }
 };
 
