@@ -1,8 +1,8 @@
 import axios from 'axios';
 import { CropDetectionResult } from '@/types';
 
-// Point at your Localtunnel URL
-const API_URL = 'https://cafricrop.loca.lt';  // ← FIXED subdomain :contentReference[oaicite:1]{index=1}
+// Point at your Localtunnel URL (forwards to localhost:8000)
+const API_URL = 'https://cafricrop.loca.lt';
 
 export const analyzeCropImage = async (
   imageBlob: Blob
@@ -14,13 +14,13 @@ export const analyzeCropImage = async (
     console.log('Sending image to API:', API_URL);
     const response = await axios.post(`${API_URL}/predict`, formData, {
       headers: {
-        // 1) Non-browser User-Agent to signal API client :contentReference[oaicite:2]{index=2}
+        // 1) Use the same custom UA as in Capacitor
         'User-Agent': 'CropDoctor-App/1.0',
-        // 2) Bypass header so Localtunnel skips the reminder :contentReference[oaicite:3]{index=3}
+        // 2) Instruct Localtunnel to bypass the reminder page
         'Bypass-Tunnel-Reminder': 'true',
-        'Content-Type': 'multipart/form-data',
+        'Content-Type': 'multipart/form-data'
       },
-      timeout: 30000,
+      timeout: 30000
     });
 
     console.log('API response:', response.data);
@@ -28,13 +28,26 @@ export const analyzeCropImage = async (
   } catch (error) {
     console.error('Error analyzing crop image:', error);
 
-    // You can keep your existing error-handling branches
-    if (axios.isAxiosError(error) && error.response?.status === 511) {
-      throw new Error(
-        'Network authentication required. Please check your connection or try on a different network.'
-      );
+    if (axios.isAxiosError(error)) {
+      const status = error.response?.status;
+      if (status === 511) {
+        throw new Error(
+          'Network authentication required. Please check your connection or try on a different network.'
+        );
+      }
+      if (error.code === 'ECONNABORTED') {
+        throw new Error('Connection timed out. Please try again later.');
+      }
+      if (status === 404) {
+        throw new Error('API endpoint not found. Please check the URL.');
+      }
+      if (status === 401) {
+        throw new Error(
+          'Authentication failed. Ensure your User-Agent header is set correctly.'
+        );
+      }
     }
-    // …etc.
-    throw error;
+
+    throw new Error('Failed to analyze image. Please try again later.');
   }
 };

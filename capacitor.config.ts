@@ -6,7 +6,8 @@ const config: CapacitorConfig = {
   webDir: 'dist',
   bundledWebRuntime: false,
   server: {
-    url: 'https://cafricrop.loca.lt',        // Point to your Localtunnel URL :contentReference[oaicite:1]{index=1}
+    // Load your app from the Localtunnel endpoint
+    url: 'https://cafricrop.loca.lt',
     cleartext: true
   },
   plugins: {
@@ -14,16 +15,17 @@ const config: CapacitorConfig = {
       presentationStyle: 'fullscreen',
       permissions: ['android.permission.CAMERA']
     },
+    // Enable the Capacitor HTTP plugin for external API calls
     CapacitorHttp: {
       enabled: true
     }
   },
   android: {
-    // Append a custom User-Agent so Localtunnel sees a non-browser client :contentReference[oaicite:2]{index=2}
+    // Append a custom, non-browser User-Agent so Localtunnel skips its reminder page
     appendUserAgent: 'CropDoctor-App/1.0',
     allowMixedContent: true,
     webContentsDebuggingEnabled: true,
-    // Whitelist your Localtunnel host for in-app navigation :contentReference[oaicite:3]{index=3}
+    // Whitelist the Localtunnel host for in-app navigation
     allowNavigation: ['localhost', '127.0.0.1', 'cafricrop.loca.lt']
   }
 };
