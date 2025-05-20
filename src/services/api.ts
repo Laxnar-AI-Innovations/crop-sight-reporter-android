@@ -2,7 +2,7 @@
 import axios from 'axios';
 import { CropDetectionResult } from '@/types';
 
-const API_URL = 'https://par-firms-job-combines.trycloudflare.com';
+const API_URL = 'https://laxnarcropdoctor.loca.lt';
 
 export const analyzeCropImage = async (imageBlob: Blob): Promise<CropDetectionResult> => {
   try {

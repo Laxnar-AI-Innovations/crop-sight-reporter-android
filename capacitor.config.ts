@@ -27,7 +27,7 @@ const config: CapacitorConfig = {
     allowMixedContent: true,
     webContentsDebuggingEnabled: true,
     // Explicitly allow connections to localhost and the API domains
-    allowNavigation: ['localhost', '127.0.0.1', '6d69-2409-40e3-3a-d305-8d73-955d-248f-d325.ngrok-free.app', 'par-firms-job-combines.trycloudflare.com']
+    allowNavigation: ['localhost', '127.0.0.1', '6d69-2409-40e3-3a-d305-8d73-955d-248f-d325.ngrok-free.app', 'par-firms-job-combines.trycloudflare.com', 'laxnarcropdoctor.loca.lt']
   }
 };
 
