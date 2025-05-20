@@ -1,4 +1,3 @@
-
 import React, { useState } from 'react';
 import { toast } from 'sonner';
 import Header from '@/components/Header';
@@ -9,15 +8,19 @@ import AnalysisResults from '@/components/AnalysisResults';
 import { CropDetectionResult } from '@/types';
 import { takePicture, base64toBlob } from '@/services/cameraService';
 import { analyzeCropImage } from '@/services/api';
+import { Alert, AlertDescription } from '@/components/ui/alert';
+import { AlertTriangle } from 'lucide-react';
 
 const Index = () => {
   const [isLoading, setIsLoading] = useState(false);
   const [imagePreview, setImagePreview] = useState<string | null>(null);
   const [analysisResult, setAnalysisResult] = useState<CropDetectionResult | null>(null);
+  const [error, setError] = useState<string | null>(null);
 
   const handleCapture = async () => {
     try {
       setIsLoading(true);
+      setError(null);
       
       // Capture photo using Capacitor Camera
       const photo = await takePicture();
@@ -47,7 +50,10 @@ const Index = () => {
       }
     } catch (error) {
       console.error('Capture error:', error);
-      toast.error('An error occurred. Please try again.');
+      const errorMessage = error instanceof Error ? error.message : 'An error occurred. Please try again.';
+      setError(errorMessage);
+      toast.error(errorMessage);
+      // Keep the image preview even if analysis failed
     } finally {
       setIsLoading(false);
     }
@@ -60,6 +66,27 @@ const Index = () => {
       <main className="flex-grow overflow-auto">
         {isLoading ? (
           <LoadingState />
+        ) : error && imagePreview ? (
+          <div className="container mx-auto px-4 pt-4 pb-24">
+            <div className="mb-6">
+              <div className="aspect-w-3 aspect-h-2 rounded-lg overflow-hidden">
+                <img 
+                  src={imagePreview} 
+                  alt="Captured crop" 
+                  className="w-full h-full object-cover"
+                />
+              </div>
+            </div>
+            
+            <Alert variant="destructive" className="my-4">
+              <AlertTriangle className="h-4 w-4 mr-2" />
+              <AlertDescription>{error}</AlertDescription>
+            </Alert>
+            
+            <p className="text-center text-muted-foreground mt-2">
+              Try taking another photo or check your network connection.
+            </p>
+          </div>
         ) : analysisResult && imagePreview ? (
           <AnalysisResults result={analysisResult} imagePreview={imagePreview} />
         ) : (
